@@ -175,7 +175,7 @@ resource "google_project_iam_member" "composer_user" {
 
 #Added cloudbuild
 module "cloudbuild" {
-  source = file("./cloudbuild.yaml")
+  source = file("./cloudbuild.tf")
 }
 
 
