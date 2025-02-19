@@ -173,4 +173,10 @@ resource "google_project_iam_member" "composer_user" {
   member  = "group:${local.deloitte_group}"
 }
 
+#Added cloudbuild
+module "cloudbuild" {
+  source = file("./cloudbuild.yaml")
+}
+
+
 # Add a way to give composer service account user role on dataflow worker service account.
