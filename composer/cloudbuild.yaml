@@ -1,13 +1,10 @@
-resource "google_cloudbuild_trigger" "push-to-branch2" {
-  trigger_template {
-    branch_name = "main"
-    repo_name   = "TerraformPOC"
-  }
- 
-  substitutions = {
-    _FOO = "bar"
-    _BAZ = "qux"
-  }
- 
-  filename = "cloudbuild.yaml"
-}
+steps:
+  - id: 'terraform init'
+    name: 'hashicorp/terraform:1.0.0'
+    script: terraform init
+  - id: 'terraform plan'
+    name: 'hashicorp/terraform:1.0.0'
+    script: terraform plan
+  - id: 'terraform apply'
+    name: 'hashicorp/terraform:1.0.0'
+    script: terraform apply --auto-approve
